@@ -50,10 +50,18 @@
                 <div class="camera-feed reveal-up delay-1">
                     <h3><i class="fa-solid fa-video"></i> Camera Feed (Primary)</h3>
                     <!-- Drone Image Placeholder -->
-                    <img src="assets/drone.png" alt="Drone Camera Feed" />
-                    <div style="margin-top: 15px; display: flex; justify-content: space-between;">
-                        <span style="color: #27ae60; font-weight: bold;"><i class="fa-solid fa-circle"></i> LIVE</span>
-                        <span>Object Detection: Active</span>
+                    <img id="feed-img" src="assets/drone.png" alt="Drone Camera Feed" />
+                    <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div>
+                            <span id="live-indicator" style="color: #27ae60; font-weight: bold;"><i class="fa-solid fa-circle"></i> LIVE</span>
+                            <span id="detection-status" style="margin-left: 10px;">Object Detection: Active</span>
+                        </div>
+                        <div class="upload-zone">
+                            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                            <button onclick="document.getElementById('image-upload').click()" class="btn-secondary" style="padding: 8px 15px; font-size: 0.9rem;">
+                                <i class="fa-solid fa-upload"></i> Tester une photo
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -119,6 +127,58 @@
             document.querySelectorAll('.reveal-up').forEach((el) => {
                 observer.observe(el);
             });
+
+            // Handle Image Upload / Testing
+            const imageUpload = document.getElementById('image-upload');
+            const feedImg = document.getElementById('feed-img');
+            const logPanel = document.querySelector('.log-panel');
+            const detectionStatus = document.getElementById('detection-status');
+            const liveIndicator = document.getElementById('live-indicator');
+
+            imageUpload.addEventListener('change', function(e) {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        feedImg.src = e.target.result;
+                        
+                        // Switch to "ANALYSIS" mode
+                        liveIndicator.style.color = "#f39c12";
+                        liveIndicator.innerHTML = '<i class="fa-solid fa-microchip"></i> ANALYSANT...';
+                        detectionStatus.innerHTML = 'IA: Traitement en cours...';
+                        
+                        addLog("[IA] Analysant l'image téléchargée...");
+
+                        // Simulate AI processing delay
+                        setTimeout(() => {
+                            const results = [
+                                "Tomato: Bacterial Spot (Confiance 94%)",
+                                "Tomato: Early Blight (Confiance 88%)",
+                                "Plant Healthy (Confiance 97%)",
+                                "Tomato: Leaf Mold (Confiance 91%)"
+                            ];
+                            const randomResult = results[Math.floor(Math.random() * results.length)];
+                            
+                            addLog(`[RESULTAT] Détection : ${randomResult}`);
+                            detectionStatus.innerHTML = `<b>IA: ${randomResult}</b>`;
+                            
+                            // Revert indicator
+                            liveIndicator.style.color = "#3498db";
+                            liveIndicator.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> SCAN TERMINE';
+                        }, 1500);
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
+            function addLog(text) {
+                const entry = document.createElement('div');
+                entry.className = 'log-entry';
+                const now = new Date();
+                const timeStr = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;
+                entry.textContent = `${timeStr} ${text}`;
+                logPanel.prepend(entry);
+                logPanel.scrollTop = 0;
+            }
         });
     </script>
 </body>
