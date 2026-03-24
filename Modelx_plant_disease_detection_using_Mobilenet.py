@@ -184,7 +184,7 @@ plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 
 # summarize history 
-for loss
+# # for loss
 plt.plot(history_1.history['loss'])
 plt.plot(history_1.history['val_loss'])
 plt.title('model loss')
