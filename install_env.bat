@@ -16,8 +16,7 @@ echo [3/4] Mise a jour de pip...
 python -m pip install --upgrade pip
 
 echo.
-echo [4/4] Installation des librairies requises (IA, vision, donnees)...
-pip install tensorflow keras numpy pandas matplotlib seaborn scikit-learn split-folders rembg jupyter ipykernel deep-translator
+pip install -r requirements.txt
 
 echo.
 echo Installation terminee !

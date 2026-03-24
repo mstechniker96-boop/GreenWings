@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Wings | L'IA pour l'Agriculture de Précision</title>
+    <meta name="description"
+        content="Découvrez Green Wings de MGK Engineering : le drone eVTOL intelligent qui optimise sa trajectoire et son énergie pour révolutionner l'agriculture de précision.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <svg class="nuru-logo-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4"
+                stroke-linecap="round" stroke-linejoin="round"
+                style="width: 32px; height: 32px; margin-right: 8px; filter: drop-shadow(0 0 2px currentColor);">
+                <circle cx="50" cy="15" r="5" fill="currentColor" />
+                <polygon points="50,30 65,42 50,54 35,42" />
+                <polyline points="43,36 50,42 57,36" />
+                <line x1="50" y1="42" x2="50" y2="50" />
+                <polygon points="50,60 54,64 50,68 46,64" />
+                <polyline points="30,32 30,68 42,78 50,86 58,78 70,68 70,32" />
+                <line x1="30" y1="32" x2="50" y2="50" />
+                <line x1="70" y1="32" x2="50" y2="50" />
+                <polyline points="30,48 40,58 30,68" />
+                <polyline points="70,48 60,58 70,68" />
+                <polyline points="20,40 30,48 20,56" />
+                <polyline points="80,40 70,48 80,56" />
+            </svg> Nuru Labs
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#accueil" data-i18n="nav_home">Accueil</a></li>
+                <li><a href="#mission" data-i18n="nav_missions">Missions</a></li>
+                <li><a href="#technologie" data-i18n="nav_tech">Technologie</a></li>
+                <li><a href="#demo" class="btn-primary" data-i18n="nav_demo">Voir la Démo</a></li>
+                <li>
+                    <div class="custom-dropdown">
+                        <div class="dropdown-selected" onclick="toggleDropdown()">
+                            <i class="fa-solid fa-globe"></i> <span id="current-lang-lbl">Français</span> <i
+                                class="fa-solid fa-chevron-down caret"></i>
+                        </div>
+                        <ul class="dropdown-list">
+                            <li onclick="changeLanguage('fr', 'Français')">Français</li>
+                            <li onclick="changeLanguage('en', 'English')">English</li>
+                            <li onclick="changeLanguage('ln', 'Lingala')">Lingala</li>
+                            <li onclick="changeLanguage('sw', 'Swahili')">Swahili</li>
+                            <li onclick="changeLanguage('lua', 'Tshiluba')">Tshiluba</li>
+                            <li onclick="changeLanguage('kg', 'Kikongo')">Kikongo</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="hero-content">
+                <div class="badge">Green Wings</div>
+                <h1><span data-i18n="hero_title_1">L'Aéronef Intelligent pour<br></span><span
+                        data-i18n="hero_title_2">l'Agriculture de Précision</span></h1>
+                <p data-i18n="hero_desc">Green Wings est un drone eVTOL autonome propulsé par l'IA. Il optimise sa
+                    trajectoire et son énergie
+                    en temps réel pour surveiller vos cultures et intervenir là où vous en avez le plus besoin.</p>
+                <div class="hero-buttons">
+                    <a href="#mission" class="btn-primary btn-large" data-i18n="hero_btn_missions">Découvrir nos
+                        missions</a>
+                    <a href="#technologie" class="btn-secondary btn-large"><i class="fa-solid fa-microchip"></i> <span
+                            data-i18n="hero_btn_tech">IA &
+                            Énergie</span></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <!-- Image of a drone over agricultural fields -->
+                    <img src="assets/drone-survolant-champ-au-coucher-du-soleil-dans-style-esthetique-administration-securite-agricole_92.png"
+                        alt="Drone survolant un champ agricole">
+                    <div class="floating-card glassmorphism float-anim-1">
+                        <i class="fa-solid fa-droplet"></i>
+                        <div>
+                            <strong data-i18n="card_irrigation">Irrigation</strong>
+                            <span data-i18n="card_ultra">Ultra-Ciblée</span>
+                        </div>
+                    </div>
+                    <div class="floating-card glassmorphism float-anim-2">
+                        <i class="fa-solid fa-battery-full"></i>
+                        <div>
+                            <strong data-i18n="card_autonomy">Autonomie</strong>
+                            <span data-i18n="card_ai">Optimisée par IA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mission" class="features">
+            <div class="section-header">
+                <h2 data-i18n="section_missions_title">Révolutionnez vos cultures</h2>
+                <p data-i18n="section_missions_desc">Conçu par une équipe d'ingénieurs passionnés, Green Wings combine
+                    capteurs de pointe et intelligence
+                    artificielle pour répondre à trois enjeux majeurs.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal-up delay-1">
+                    <div class="icon-wrapper"><i class="fa-solid fa-seedling"></i></div>
+                    <h3 data-i18n="feature_growth_title">Suivi de Croissance</h3>
+                    <p data-i18n="feature_growth_desc">Déploiement de capteurs embarqués (LiDAR TF-Luna, Caméra v3) pour
+                        surveiller en haute précision
+                        le développement de vos plants jour après jour.</p>
+                </div>
+                <div class="feature-card reveal-up delay-2">
+                    <div class="icon-wrapper"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+                    <h3 data-i18n="feature_water_title">Arrosage Intelligent</h3>
+                    <p data-i18n="feature_water_desc">Optimisation du vol pour intervenir de manière ciblée, distribuant
+                        l'eau ou les nutriments
+                        exactement là où la plante en a besoin.</p>
+                </div>
+                <div class="feature-card reveal-up delay-3">
+                    <div class="icon-wrapper"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <h3 data-i18n="feature_drought_title">Détection de Sécheresse</h3>
+                    <p data-i18n="feature_drought_desc">L'intelligence prédictive analyse les données pour repérer très
+                        tôt les zones de stress hydrique
+                        avant que les dégâts ne soient irréversibles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="technologie" class="features"
+            style="background-color: var(--primary-light); margin-top: 0; padding-top: 80px;">
+            <div class="section-header">
+                <h2 data-i18n="section_tech_title">Technologie & Innovation</h2>
+                <p data-i18n="section_tech_desc">Inspiré du système de prédiction énergétique Adaptron.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal-up delay-1"
+                    style="background: var(--glass-bg); border-color: transparent;">
+                    <div class="icon-wrapper" style="background: var(--primary-color); color: white;"><i
+                            class="fa-solid fa-route"></i></div>
+                    <h3 data-i18n="tech_traj_title">Trajectoire Optimisée (6DOF)</h3>
+                    <p data-i18n="tech_traj_desc">Simulé sous MATLAB, le drone calcule sa trajectoire en temps réel via
+                        un Raspberry Pi 5 pour
+                        s'adapter à la météo et la topographie de l'exploitation.</p>
+                </div>
+                <div class="feature-card reveal-up delay-2"
+                    style="background: var(--glass-bg); border-color: transparent;">
+                    <div class="icon-wrapper" style="background: var(--primary-color); color: white;"><i
+                            class="fa-solid fa-bolt"></i></div>
+                    <h3 data-i18n="tech_energy_title">Gestion de l'Énergie par IA</h3>
+                    <p data-i18n="tech_energy_desc">Les algorithmes basés sur Random Forest prédisent et minimisent la
+                        consommation des 4 moteurs
+                        brushless, garantissant un vol prolongé et une couverture maximale.</p>
+                </div>
+                <div class="feature-card reveal-up delay-3"
+                    style="background: var(--glass-bg); border-color: transparent;">
+                    <div class="icon-wrapper" style="background: var(--primary-color); color: white;"><i
+                            class="fa-solid fa-desktop"></i></div>
+                    <h3 data-i18n="tech_dash_title">Dashboard de Contrôle</h3>
+                    <p data-i18n="tech_dash_desc">Contrôlez vos missions depuis notre station au sol basée sur Flask.
+                        Visualisez la télémétrie en
+                        temps réel et prenez des décisions éclairées.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="banner">
+            <div class="banner-content glassmorphism-dark"
+                style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+                <h2 data-i18n="demo_title">Participez à notre prochaine démonstration</h2>
+                <p data-i18n="demo_desc">Venez voir Green Wings en action dans les champs et découvrez comment Nuru Labs
+                    redéfinit
+                    l'agronomie moderne.</p>
+                <a href="#contact" class="btn-primary" data-i18n="demo_btn">Nous contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <svg class="nuru-logo-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        style="width: 32px; height: 32px; margin-right: 8px; filter: drop-shadow(0 0 2px currentColor);">
+                        <circle cx="50" cy="15" r="5" fill="currentColor" />
+                        <polygon points="50,30 65,42 50,54 35,42" />
+                        <polyline points="43,36 50,42 57,36" />
+                        <line x1="50" y1="42" x2="50" y2="50" />
+                        <polygon points="50,60 54,64 50,68 46,64" />
+                        <polyline points="30,32 30,68 42,78 50,86 58,78 70,68 70,32" />
+                        <line x1="30" y1="32" x2="50" y2="50" />
+                        <line x1="70" y1="32" x2="50" y2="50" />
+                        <polyline points="30,48 40,58 30,68" />
+                        <polyline points="70,48 60,58 70,68" />
+                        <polyline points="20,40 30,48 20,56" />
+                        <polyline points="80,40 70,48 80,56" />
+                    </svg> Nuru Labs
+                </div>
+                <p data-i18n="footer_p1">Un projet d'ingénierie porté par Severina LENGESE, Juan NZOYOUM et Kevin MBUSE
+                    au sein de
+                    Nuru Labs.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer_sol_title">Solutions</h4>
+                <ul>
+                    <li><a href="#mission" data-i18n="footer_sol_1">Suivi des récoltes</a></li>
+                    <li><a href="#mission" data-i18n="footer_sol_2">Arrosage de précision</a></li>
+                    <li><a href="#technologie" data-i18n="footer_sol_3">Technologie embarquée</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <h4>Nuru Labs</h4>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/severina-lengese-561aa0381/" aria-label="LinkedIn"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/R3-Ouel/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_rights">&copy; 2026 Nuru Labs. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <script src="translations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target); // keep it shown once revealed
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-up').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

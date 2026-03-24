@@ -1,0 +1,13 @@
+tensorflow
+keras
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+split-folders
+rembg
+deep-translator
+opencv-python
+plotly
+Pillow
