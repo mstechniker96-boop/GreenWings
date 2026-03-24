@@ -1,40 +1,40 @@
-# INTRODUCTION
+# GREENWINGS : Drone Intelligent pour l'Agriculture de Précision
 
-Bienvenue dans le dépôt de mon projet de master en Data Science.
+Bienvenue dans le dépôt officiel du projet **GreenWings**, un drone eVTOL autonome conçu pour révolutionner l'agriculture de précision grâce à l'Intelligence Artificielle et à l'Edge Computing.
 
-## Titre du projet : L'Edge Computing au Service de l'Agriculture de Précision - Identification Automatisée des Maladies des Plantes
+## Objectif du Projet
+L'objectif principal est de fabriquer et de déployer un drone capable de diagnostiquer en temps réel les maladies des plantes directement sur le terrain. En utilisant des techniques d'apprentissage profond (Deep Learning) embarquées, **GreenWings** permet une intervention rapide, ciblée et efficace, réduisant ainsi les coûts et l'utilisation de pesticides.
 
-L'objectif principal de ce projet est de développer l'agriculture de précision. Il s'agit d'un projet d'edge computing qui utilise des techniques d'apprentissage profond déployées directement sur des appareils mobiles et edge pour le diagnostic local des cultures.
+### Caractéristiques Principales :
+*   **Identification Automatisée** : Détection des maladies via caméra embarquée et modèles MobileNet.
+*   **Edge Computing** : Traitement des données localement sur Raspberry Pi 5 / Coral TPU pour une latence minimale.
+*   **Optimisation Énergétique** : Algorithmes IA (Random Forest) pour maximiser l'autonomie de vol.
+*   **Monitoring en Temps Réel** : Interface de contrôle (Dashboard) pour suivre la télémétrie et les détections.
 
-Traditionnellement, l'identification des maladies des plantes reposait sur une inspection manuelle par des experts, ce qui est un processus long, coûteux et souvent limité en termes de scalabilité.
+## APERÇU TECHNIQUE :
+Ce système utilise un réseau neuronal convolutif **MobileNet V2** optimisé via **TensorFlow Lite**. Le modèle a été entraîné sur des milliers d'images pour garantir une précision de plus de 90%, même dans des conditions de ressources limitées.
 
-Cependant, avec la disponibilité généralisée des appareils mobiles et les progrès des capacités de traitement des données, il existe une opportunité passionnante de développer une solution pratique et accessible. Imaginez que les agriculteurs puissent identifier les maladies des cultures simplement en capturant une photo avec leur téléphone mobile.
+## STRUCTURE DU PROJET
+Le projet a été rendu entièrement standalone (sans dépendance aux notebooks Jupyter) pour une portabilité maximale :
 
-Dans ce dépôt, vous trouverez divers fichiers liés au projet, y compris la documentation, le code et les ensembles de données. Ces ressources vous guideront sur la façon de les utiliser efficacement.
+1.  **run_project.bat** : Le lanceur principal interactif pour tout gérer.
+2.  **install_env.bat** : Script d'installation automatique de l'environnement virtuel.
+3.  **monitoring/** : Dossier contenant le Dashboard de contrôle Web (HTML/CSS/JS).
+4.  **requirements.txt** : Liste exhaustive des dépendances Python.
+5.  **Scripts de Modélisation (Python)** :
+    *   `Model1_disease_detection_using_mobilenet_tl.py`
+    *   `Model2_plant_disease_detection_using_mobilenet_tl.py`
+    *   `Modelx_plant_disease_detection_using_Mobilenet.py`
+    *   `Plant_disease_model_testing(BGImages).py`
+    *   `Remove_Image_Background.py`
+6.  **Documentation** : Thèse de Master et présentations PDF incluses.
 
-Merci de votre intérêt et n'hésitez pas à explorer le contenu de ce dépôt !
+## Comment démarrer ?
+1. Exécutez `install_env.bat` pour configurer l'environnement.
+2. Lancez `run_project.bat` pour accéder au menu de contrôle et au Dashboard de monitoring.
 
-## APERÇU :
-
-Ce projet présente un système alimenté par l'IA pour la détection automatisée des maladies des feuilles de tomate, optimisé pour un déploiement sur les appareils mobiles et edge. 
-
-En utilisant un réseau neuronal convolutif MobileNet et TensorFlow Lite, le modèle a été entraîné sur plus de 16 000 images, avec et sans suppression de l'arrière-plan, afin d'évaluer l'impact du prétraitement sur les performances de classification. 
-
-Les résultats ont montré que la suppression des arrière-plans d'images améliorait la précision globale et la robustesse du modèle. 
-
-Le système a atteint une précision de plus de 90 % et a démontré une efficacité adaptée aux environnements agricoles en temps réel et à faibles ressources. Ce travail contribue au diagnostic précoce des maladies des cultures et constitue la fondation d'AgroVerse, une plateforme de santé des plantes évolutive.
-
-## PLAN DU CONTENU
-
-1. Document de Thèse de Master en Data Science : PDF du projet complet avec revue de la littérature, méthodologie, discussions et conclusion.
-2. Model1_disease_detection_using_mobilenet_tl.ipynb : L'algorithme de retraitement, d'entraînement et de validation du Modèle 1
-3. Model2_plant_disease_detection_using_mobilenet_tl.ipynb : Algorithme pour l'entraînement et la validation du Modèle 2
-4. Modelx_plant_disease_detection_using_Mobilenet : Algorithme pour l'entraînement et la validation du Modèle X
-5. Plant_disease_model_testing(BGImages).ipynb : Algorithme pour tester les Modèles 1 et 2 (images de test de feuilles de tomate avec arrière-plan)
-6. Plant_disease_model_testing(No_BGImages).ipynb : Algorithme pour tester les Modèles 1 et 2 (images de test de feuilles de tomate sans arrière-plan)
-7. README.md - vous y êtes déjà :)
-8. Remove_Image_Background.ipynb : Algorithme simple pour supprimer automatiquement les arrière-plans d'une collection de feuilles d'images.
-9. Viva presentation.pdf - Une présentation sous forme de diaporama en pdf, affichant les résultats et la conclusion de ce travail.
-
+---
 Signé,
-kevin mbuse
+**kevin mbuse**
+*Nuru Labs*
+
