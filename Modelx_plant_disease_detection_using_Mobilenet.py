@@ -7,8 +7,7 @@ from zipfile import ZipFile
 # !unzip drive/MyDrive/plantvillagedataset.zip
 
 # Importer les bibliothèques nécessaires
-from keras.utils 
-import np_utils
+from keras.utils import np_utils
 from keras.models import Sequential
 from keras.layers import Convolution2D,Dense,MaxPool2D,Activation,Dropout,Flatten
 from keras.layers import GlobalAveragePooling2D
@@ -72,8 +71,7 @@ model_finetuned.compile(optimizer='adam',
 # Afficher les calques, la forme et les paramètres du modèlemodel_finetuned.summary()
 
 # Entraîner le modèle avec les données de l'objet générateur d'images
-from keras.callbacks 
-import ReduceLROnPlateau
+from keras.callbacks import ReduceLROnPlateau
 validation_generator = train_datagen.flow_from_directory(
                        test_dir, # same directory as training data
                        target_size=(img_height, img_width),
@@ -186,7 +184,8 @@ plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 
 # summarize history 
-for lossplt.plot(history_1.history['loss'])
+for loss
+plt.plot(history_1.history['loss'])
 plt.plot(history_1.history['val_loss'])
 plt.title('model loss')
 plt.ylabel('loss')
