@@ -39,7 +39,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 45px;
-    background-image: url('assets/74104aa499247298203b09c17752d32e.png');
+    background-image: url('../images/74104aa499247298203b09c17752d32e.png');
     background-size: cover;
     background-position: center;
     z-index: 1100;
