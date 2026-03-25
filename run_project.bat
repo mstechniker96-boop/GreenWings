@@ -24,9 +24,10 @@ echo 5. Tester le modele (Sans Background)
 echo 6. Supprimer le background des images
 echo 7. Traduire le texte (translate_notebooks.py)
 echo 8. Ouvrir le Dashboard de Monitoring (Interface Web)
-echo 9. Quitter
+echo 9. Ouvrir le Dashboard d'Entraînement (Interface Web)
+echo 10. Quitter
 echo.
-set /p choix="Votre choix (1-9): "
+set /p choix="Votre choix (1-10): "
 
 if "%choix%"=="1" python Model1_disease_detection_using_mobilenet_tl.py
 if "%choix%"=="2" python Model2_plant_disease_detection_using_mobilenet_tl.py
@@ -36,7 +37,8 @@ if "%choix%"=="5" python "Plant_disease_model_testing(No_BGImages).py"
 if "%choix%"=="6" python Remove_Image_Background.py
 if "%choix%"=="7" python translate_notebooks.py
 if "%choix%"=="8" start monitoring\index.html
-if "%choix%"=="9" exit /b
+if "%choix%"=="9" start monitoring\training.html
+if "%choix%"=="10" exit /b
 
 echo.
 pause

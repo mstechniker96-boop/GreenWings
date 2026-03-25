@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Wings | Training Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard { padding: 100px 5% 50px; min-height: 100vh; background-color: var(--primary-light); }
+        .training-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .card { background: var(--glass-bg); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .progress-bar { height: 10px; background: rgba(0,0,0,0.1); border-radius: 5px; margin: 15px 0; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary-color); width: 0%; transition: width 0.3s; }
+        .dataset-info { margin-top: 2rem; }
+        .data-path { font-family: monospace; background: rgba(0,0,0,0.05); padding: 5px 10px; border-radius: 5px; }
+        .stats-val { font-size: 1.5rem; font-weight: 800; color: var(--primary-color); }
+        .btn-start { background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: 600; width: 100%; transition: transform 0.2s; }
+        .btn-start:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-microchip" style="color: var(--primary-color); margin-right: 10px;"></i>
+            Green Wings <span>| Entraînement</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="btn-secondary">Retour au Monitoring</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+            <h2>Configuration de l'Entraînement IA</h2>
+            <p>Lancez et suivez l'apprentissage de vos modèles MobileNet V2.</p>
+        </div>
+
+        <div class="training-container">
+            <!-- Dataset Configuration -->
+            <div class="card reveal-up">
+                <h3><i class="fa-solid fa-database"></i> Source des Données</h3>
+                <p style="margin: 15px 0;">Le modèle utilise les dossiers locaux pour l'entraînement :</p>
+                <div class="dataset-info">
+                    <p>Répertoire Principal : <span class="data-path">./dataset/</span></p>
+                    <p>Données Pré-traitées : <span class="data-path">./Output_bg/</span></p>
+                </div>
+                <hr style="opacity: 0.1; margin: 20px 0;">
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <p>Images (Train)</p>
+                        <div class="stats-val">~12,000</div>
+                    </div>
+                    <div>
+                        <p>Classes (Maladies)</p>
+                        <div class="stats-val">10</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control & Progress -->
+            <div class="card reveal-up delay-1">
+                <h3><i class="fa-solid fa-play"></i> Contrôle de Session</h3>
+                <div style="margin: 20px 0;">
+                    <label>Sélectionner le Modèle :</label>
+                    <select style="width: 100%; padding: 10px; border-radius: 8px; margin-top: 5px;">
+                        <option>Model 1 (MobileNet TL - Standard)</option>
+                        <option>Model 2 (MobileNet TL - Précision+)</option>
+                        <option>Model X (MobileNet Experimental)</option>
+                    </select>
+                </div>
+                <button class="btn-start" id="start-btn">LANCER L'ENTRAÎNEMENT</button>
+                
+                <div id="training-status" style="display:none; margin-top:20px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Progrès Global (Époques 1/8)</span>
+                        <span id="pct">0%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+                    <p id="current-task">Initialisation des poids Imagenet...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Graph Simulation -->
+        <div class="card reveal-up delay-2" style="margin-top: 2rem;">
+            <h3><i class="fa-solid fa-chart-line"></i> Métriques de Performance (Accuracy / Loss)</h3>
+            <div style="height: 200px; display: flex; align-items: flex-end; gap: 10px; padding-bottom: 20px;">
+                <!-- Simulated Bars -->
+                <div style="flex:1; background: #3498db; height: 10%; border-radius: 5px;"></div>
+                <div style="flex:1; background: #3498db; height: 25%; border-radius: 5px;"></div>
+                <div style="flex:1; background: #3498db; height: 45%; border-radius: 5px;"></div>
+                <div style="flex:1; background: #3498db; height: 60%; border-radius: 5px;"></div>
+                <div style="flex:1; background: #3498db; height: 75%; border-radius: 5px;"></div>
+                <div style="flex:1; background: #27ae60; height: 85%; border-radius: 5px;"></div>
+                <div style="flex:1; background: #27ae60; height: 92%; border-radius: 5px;"></div>
+                <div style="flex:1; background: #27ae60; height: 95%; border-radius: 5px;"></div>
+            </div>
+            <div style="text-align: center; font-size: 0.8rem; opacity: 0.6;">ÉVOLUTION DE LA PRÉCISION PAR ÉPOQUE</div>
+        </div>
+    </main>
+
+    <script>
+        const btn = document.getElementById('start-btn');
+        const status = document.getElementById('training-status');
+        const fill = document.getElementById('fill');
+        const pct = document.getElementById('pct');
+        const task = document.getElementById('current-task');
+
+        btn.onclick = function() {
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> EN COURS...';
+            btn.style.background = "#bdc3c7";
+            status.style.display = "block";
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 1;
+                fill.style.width = progress + "%";
+                pct.innerHTML = progress + "%";
+                
+                if(progress == 20) task.innerHTML = "Chargement du dataset...";
+                if(progress == 40) task.innerHTML = "Augmentation des images (Horizontal Flip)...";
+                if(progress == 60) task.innerHTML = "Entraînement des couches denses (Epoch 1)...";
+                if(progress == 80) task.innerHTML = "Validation des résultats...";
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    task.innerHTML = "Entraînement terminé ! Modèle sauvegardé sous plantdiseasemobilenet8epoch.h5";
+                    btn.innerHTML = "ENTRAÎNEMENT TERMINÉ ✅";
+                    btn.style.background = "#27ae60";
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
