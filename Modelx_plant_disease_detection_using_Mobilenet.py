@@ -7,7 +7,7 @@ from zipfile import ZipFile
 # !unzip drive/MyDrive/plantvillagedataset.zip
 
 # Importer les bibliothèques nécessaires
-from keras.utils import np_utils
+from tensorflow.keras import utils as np_utils
 from keras.models import Sequential
 from keras.layers import Convolution2D,Dense,MaxPool2D,Activation,Dropout,Flatten
 from keras.layers import GlobalAveragePooling2D
