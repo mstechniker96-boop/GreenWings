@@ -1,6 +1,6 @@
 # Chargez le lecteur Google
-from google.colab import drive
-drive.mount('/content/drive')
+# from google.colab import drive
+# drive.mount('/content/drive')
 
 # Importer les bibliothèques nécessaires
 import tensorflow as tf
@@ -22,21 +22,21 @@ import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-os.chdir("/content/drive/My Drive/project/")
+os.chdir("./")
 # !ls
-root_dir = ('/content/drive/MyDrive/project/dataset/')
+root_dir = ('./dataset/')
 classes = os.listdir(root_dir)
 classes
 
 # La fonction Splitfolder divise les données en dossiers test, train et val dans votre répertoire spécifié
 import splitfolders
-splitfolders.ratio("/content/drive/MyDrive/project/dataset/", output="/content/drive/MyDrive/project/Output_bg/",
+splitfolders.ratio("./dataset/", output="./Output_bg/",
     seed=1337, ratio=(.8, .1, .1), group_prefix=None, move=False) # default values
 
 # Attribuez les répertoires pour l'ensemble de données d'entraînement, de test et de validation
-train_dir = '/content/drive/MyDrive/project/Output_bg/train/'
-test_dir = '/content/drive/MyDrive/project/Output_bg/test/'
-val_dir = '/content/drive/MyDrive/project/Output_bg/val/'
+train_dir = './Output_bg/train/'
+test_dir = './Output_bg/test/'
+val_dir = './Output_bg/val/'
 
 # Importer la bibliothèque du générateur de données d'image
 from keras.preprocessing.image import ImageDataGenerator
@@ -119,7 +119,7 @@ def prepare(img_path):
 
 # Faire une prédiction avec une image de test
 import keras.utils as image
-test_img = ('/content/drive/MyDrive/project/Output_bg/test/Tomato___Leaf_Mold/image (163).JPG')
+test_img = ('./Output_bg/test/Tomato___Leaf_Mold/image (163).JPG')
 result = model_finetuned.predict([prepare(test_img)])
 disease=image.load_img(test_img)
 plt.imshow(disease)
@@ -133,11 +133,11 @@ keras_model = tf.keras.models.load_model("plantdiseasemobilenet8epoch.h5")
 converter = tf.lite.TFLiteConverter.from_keras_model(keras_model)
 
 model = converter.convert()
-file = open('/content/drive/MyDrive/project/Output_bg/outputmobilenetof8epoch.tflite' , 'wb' ) 
+file = open('./Output_bg/outputmobilenetof8epoch.tflite' , 'wb' ) 
 file.write(model)
 
 # Chargez le modèle TFLite et allouez des tenseurs.
-model_path=('/content/drive/MyDrive/project/Output_bg/outputmobilenetof8epoch.tflite')
+model_path=('./Output_bg/outputmobilenetof8epoch.tflite')
 interpreter = tf.lite.Interpreter(model_path=model_path)
 interpreter.allocate_tensors()
 
@@ -156,7 +156,7 @@ def prepare(img_path):
     return np.expand_dims(x, axis=0)
 
 # Spécifiez le répertoire de l'image de test
-input_data = [prepare("/content/drive/MyDrive/project/Output_bg/test/Tomato___Early_blight/image (497).JPG")]
+input_data = [prepare("./Output_bg/test/Tomato___Early_blight/image (497).JPG")]
 
 # Allouer des tenseurs
 input_shape = input_details[0]['shape']

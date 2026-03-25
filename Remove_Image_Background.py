@@ -1,6 +1,6 @@
 # Monter le lecteur là où se trouvent les dossiers d'images
-from google.colab import drive
-drive.mount('/content/drive')
+# from google.colab import drive
+# drive.mount('/content/drive')
 
 # Importez les bibliothèques nécessaires
 from rembg import remove

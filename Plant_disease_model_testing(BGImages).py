@@ -1,6 +1,6 @@
 # Montez le lecteur Google
-from google.colab import drive
-drive.mount('/content/drive')
+# from google.colab import drive
+# drive.mount('/content/drive')
 
 # Spécifier le répertoire de l'ensemble de données de testtest_di
 r = '/content/drive/MyDrive/Output_bg/test'
