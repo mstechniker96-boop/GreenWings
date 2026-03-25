@@ -59,7 +59,7 @@
                         <div class="upload-zone">
                             <input type="file" id="image-upload" accept="image/*" style="display: none;">
                             <button onclick="document.getElementById('image-upload').click()" class="btn-secondary" style="padding: 8px 15px; font-size: 0.9rem;">
-                                <i class="fa-solid fa-upload"></i> Tester une photo
+                                <i class="fa-solid fa-upload"></i> Analyser un fruit
                             </button>
                         </div>
                     </div>
@@ -68,9 +68,9 @@
                 <div class="log-panel reveal-up delay-3">
                     <h3><i class="fa-solid fa-terminal"></i> System Logs</h3>
                     <div class="log-entry">[14:02:05] [IA] Random Forest: Consommation optimisée (-12%).</div>
-                    <div class="log-entry">[14:02:10] [VISION] Plant stress detected at Sector B-4.</div>
-                    <div class="log-entry">[14:02:15] [CTRL] Adjusting altitude to 45m for detailed scan.</div>
-                    <div class="log-entry">[14:02:40] [SYS] Connection to Ground Control stabilised at 98%.</div>
+                    <div class="log-entry">[14:02:10] [VISION] Stress de la plante détecté au Secteur B-4.</div>
+                    <div class="log-entry">[14:02:15] [CTRL] Ajustement de l'altitude à 45m pour balayage détaillé.</div>
+                    <div class="log-entry">[14:02:40] [SYS] Connexion à la station au sol stabilisée à 98%.</div>
                 </div>
             </div>
 
@@ -151,19 +151,20 @@
                         // Simulate AI processing delay
                         setTimeout(() => {
                             const results = [
-                                "Tomato: Bacterial Spot (Confiance 94%)",
-                                "Tomato: Early Blight (Confiance 88%)",
-                                "Plant Healthy (Confiance 97%)",
-                                "Tomato: Leaf Mold (Confiance 91%)"
+                                "Tomate : Tache bactérienne (Confiance 94%)",
+                                "Tomate : Brûlure précoce (Confiance 88%)",
+                                "Plante Saine (Confiance 97%)",
+                                "Tomate : Moisissure foliaire (Confiance 91%)",
+                                "Poivron : Flétrissement (Confiance 85%)"
                             ];
                             const randomResult = results[Math.floor(Math.random() * results.length)];
                             
                             addLog(`[RESULTAT] Détection : ${randomResult}`);
-                            detectionStatus.innerHTML = `<b>IA: ${randomResult}</b>`;
+                            detectionStatus.innerHTML = `<b>IA : ${randomResult}</b>`;
                             
                             // Revert indicator
                             liveIndicator.style.color = "#3498db";
-                            liveIndicator.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> SCAN TERMINE';
+                            liveIndicator.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> ANALYSE TERMINEE';
                         }, 1500);
                     };
                     reader.readAsDataURL(this.files[0]);
