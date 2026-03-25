@@ -9,7 +9,7 @@ from zipfile import ZipFile
 # Importer les bibliothèques nécessaires
 from tensorflow.keras import utils as np_utils
 from keras.models import Sequential
-from keras.layers import Convolution2D,Dense,MaxPool2D,Activation,Dropout,Flatten
+from keras.layers import Conv2D,Dense,MaxPool2D,Activation,Dropout,Flatten
 from keras.layers import GlobalAveragePooling2D
 from keras.optimizers import Adam
 from sklearn.model_selection import train_test_split
