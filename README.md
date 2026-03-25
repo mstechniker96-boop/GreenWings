@@ -14,7 +14,12 @@ L'objectif principal est de fabriquer et de déployer un drone capable de diagno
 ## APERÇU TECHNIQUE :
 Ce système utilise un réseau neuronal convolutif **MobileNet V2** optimisé via **TensorFlow Lite**. Le modèle a été entraîné sur des milliers d'images pour garantir une précision de plus de 90%, même dans des conditions de ressources limitées.
 
-## STRUCTURE DU PROJET
+## ### PRÉPARATION DES DONNÉES
+Pour que l'IA puisse apprendre, vous devez placer vos images dans les dossiers suivants :
+*   **Entraînement** : Placez vos dossiers de classes (ex: `Apple___Black_rot`, `Tomato___Healthy`) dans le dossier `dataset/`.
+*   **Sortie** : Le dossier `Output_bg/` sera utilisé automatiquement pour stocker les images sans arrière-plan.
+
+STRUCTURE DU PROJET
 Le projet a été rendu entièrement standalone (sans dépendance aux notebooks Jupyter) pour une portabilité maximale :
 
 1.  **run_project.bat** : Le lanceur principal interactif pour tout gérer.
